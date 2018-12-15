@@ -25,13 +25,13 @@ class PhonesDb {
 
   bookPhone(phone, name) {
     if (!`${name}`.trim()) {
-      throw 'Name is required';
+      return Promise.reject(new Error('Name is required'));
     }
     if (!(phone in phones)) {
-      throw 'Phone not recognized';
+      return Promise.reject(new Error('Phone not recognized'));
     }
     if (!this.isPhoneAvailable(phone)) {
-      throw 'Phone is booked';
+      return Promise.reject(new Error('Phone is booked'));
     }
     phones[phone].bookingInfo = {
       at: new Date().toString(),
@@ -43,13 +43,17 @@ class PhonesDb {
 
   returnPhone(phone, key) {
     if (!(phone in phones)) {
-      throw 'Phone not recognized';
+      return Promise.reject(new Error('Phone not recognized'));
     }
     if (this.isPhoneAvailable(phone)) {
-      throw "Phone is avalable. You can't return it";
+      return Promise.reject(
+        new Error("Phone is avalable. You can't return it"),
+      );
     }
     if (key !== phones[phone].bookingInfo.key) {
-      throw "You can't return phone with incorrect key";
+      return Promise.reject(
+        new Error("You can't return phone with incorrect key"),
+      );
     }
     delete phones[phone].bookingInfo;
     return this.dumpDb();

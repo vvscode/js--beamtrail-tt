@@ -6,6 +6,6 @@ const router = Router();
 
 router.get('/api/phones', phones);
 
-// router.use('/api/phone', phone);
+router.use('/api/phone', phone);
 
 module.exports = router;

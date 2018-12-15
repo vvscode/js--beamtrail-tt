@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+const bodyParser = require('body-parser');
 
 const api = require('./api');
 
@@ -12,8 +13,16 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(bodyParser.json({ strict: false }));
     server.use(api);
     server.get('*', handle);
+    server.use((err, req, res, next) => {
+      console.error('Error:', err);
+      res.status(500).json({
+        message: err.message,
+        stack: err.stack,
+      });
+    });
 
     server.listen(PORT, err => {
       if (err) {
