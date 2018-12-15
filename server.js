@@ -1,8 +1,8 @@
-import express from 'express';
-import next from 'next';
+const express = require('express');
+const next = require('next');
+const bodyParser = require('body-parser');
 
-import api from './api';
-import * as cardsUtils from './utils/cards';
+const api = require('./api');
 
 const PORT = process.env.PORT || 8080;
 const dev = process.env.NODE_ENV !== 'production';
@@ -11,11 +11,18 @@ const handle = app.getRequestHandler();
 
 app
   .prepare()
-  .then(() => cardsUtils.setupCardsStorage())
   .then(() => {
     const server = express();
+    server.use(bodyParser.json({ strict: false }));
     server.use(api);
     server.get('*', handle);
+    server.use((err, req, res, next) => {
+      console.error('Error:', err);
+      res.status(500).json({
+        message: err.message,
+        stack: err.stack,
+      });
+    });
 
     server.listen(PORT, err => {
       if (err) {
