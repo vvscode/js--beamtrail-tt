@@ -1,0 +1,15 @@
+.PhonesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.PhonesTable tr:nth-child(even) {background: lightblue}
+.PhonesTable tr:nth-child(odd) {background: white}
+
+.PhonesTable__info {
+  width: 70%;
+}
+
+.PhonesTable td {
+  border: 1px solid gray;
+}

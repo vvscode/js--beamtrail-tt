@@ -2,6 +2,13 @@ const phones = require('./phonesDb.json');
 
 const writeFile = require('util').promisify(require('fs').writeFile);
 
+getKey = () =>
+  'ABCDEFGHIJKLMHNOPRST'
+    .split('')
+    .sort(() => (Math.random() > 0.3 ? 1 : Math.random() < 0.6 ? 0 : -1))
+    .join('')
+    .substr(0, 4);
+
 class PhonesDb {
   getListOfPhones() {
     return Promise.resolve(
@@ -16,7 +23,10 @@ class PhonesDb {
   }
 
   dumpDb() {
-    return writeFile('./phonesDb.json', JSON.stringify(phones, null, 2));
+    return writeFile(
+      __dirname + '/phonesDb.json',
+      JSON.stringify(phones, null, 2),
+    );
   }
 
   isPhoneAvailable(phone) {
@@ -36,9 +46,9 @@ class PhonesDb {
     phones[phone].bookingInfo = {
       at: new Date().toString(),
       by: name,
-      key: Math.random(),
+      key: getKey(),
     };
-    this.dumpDb().then(() => phones[phone].bookingInfo);
+    return this.dumpDb().then(() => phones[phone].bookingInfo);
   }
 
   returnPhone(phone, key) {

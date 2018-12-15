@@ -5,6 +5,11 @@
       "2gBands": "GSM 850 / 900 / 1800 / 1900 - SIM 1 & SIM 2 (dual-SIM model only)",
       "3gBands": "HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 ",
       "4gBands": " LTE"
+    },
+    "bookingInfo": {
+      "at": "Sat Dec 15 2018 15:55:33 GMT+0400 (Gulf Standard Time)",
+      "by": "vvscode",
+      "key": "AJHB"
     }
   },
   "Samsung Galaxy S8": {
