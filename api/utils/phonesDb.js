@@ -1,9 +1,59 @@
+const phones = require('./phonesDb.json');
+
+const writeFile = require('util').promisify(require('fs').writeFile);
+
 class PhonesDb {
-  getListOfPhones() {}
+  getListOfPhones() {
+    return Promise.resolve(
+      Object.keys(phones).map(key => ({
+        name: key,
+        phoneInfo: phones[key].phoneInfo || {},
+        isAvailable: this.isPhoneAvailable(key),
+        wasBookedAt: (phones[key].bookingInfo || {}).at,
+        wasBookedBy: (phones[key].bookingInfo || {}).by,
+      })),
+    );
+  }
 
-  isPhoneAvailable(phone) {}
+  dumpDb() {
+    return writeFile('./phonesDb.json', JSON.stringify(phones, null, 2));
+  }
 
-  bookPhone(phone) {}
+  isPhoneAvailable(phone) {
+    return !phones[phone].bookingInfo;
+  }
 
-  returnPhone(phone) {}
+  bookPhone(phone, name) {
+    if (!`${name}`.trim()) {
+      throw 'Name is required';
+    }
+    if (!(phone in phones)) {
+      throw 'Phone not recognized';
+    }
+    if (!this.isPhoneAvailable(phone)) {
+      throw 'Phone is booked';
+    }
+    phones[phone].bookingInfo = {
+      at: new Date().toString(),
+      by: name,
+      key: Math.random(),
+    };
+    this.dumpDb().then(() => phones[phone].bookingInfo);
+  }
+
+  returnPhone(phone, key) {
+    if (!(phone in phones)) {
+      throw 'Phone not recognized';
+    }
+    if (this.isPhoneAvailable(phone)) {
+      throw "Phone is avalable. You can't return it";
+    }
+    if (key !== phones[phone].bookingInfo.key) {
+      throw "You can't return phone with incorrect key";
+    }
+    delete phones[phone].bookingInfo;
+    return this.dumpDb();
+  }
 }
+
+module.exports = new PhonesDb();

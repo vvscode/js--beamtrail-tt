@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import phones from './phones';
-import phone from './phone';
+const { Router } = require('express');
+const phones = require('./phones');
+const phone = require('./phone');
 
 const router = Router();
 
 router.get('/api/phones', phones);
 
-router.use('/api/phone', phone);
+// router.use('/api/phone', phone);
 
-export default router;
+module.exports = router;
