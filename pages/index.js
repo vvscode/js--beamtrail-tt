@@ -1,8 +1,10 @@
-const React = require('react');
+import React from 'react';
+import PhonesTable from '../components/PhonesTable';
 
 export default class IndexPage extends React.Component {
   state = {
     phones: [],
+    name: '',
   };
 
   componentDidMount() {
@@ -17,8 +19,8 @@ export default class IndexPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Page</h1>
-        <pre>{JSON.stringify(this.state.phones)}</pre>
+        <h1>Phones</h1>
+        <PhonesTable phones={this.state.phones} />
       </div>
     );
   }

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "fonoapi-nodejs": "^0.1.1",
