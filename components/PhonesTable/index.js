@@ -1,8 +1,9 @@
 import React from 'react';
 import PhoneInfo from './PhoneInfo';
+import BookReturnPhone from './BookReturnPhone';
 import './styles.css';
 
-const PhonesTable = ({ phones }) =>
+const PhonesTable = ({ phones, userName, bookPhone, returnPhone }) =>
   phones.length ? (
     <table className="PhonesTable">
       <thead>
@@ -19,7 +20,14 @@ const PhonesTable = ({ phones }) =>
             <td className="PhonesTable__info">
               <PhoneInfo phoneInfo={phone.phoneInfo} />
             </td>
-            <td className="PhonesTable__booking">xx</td>
+            <td className="PhonesTable__booking">
+              <BookReturnPhone
+                phone={phone}
+                userName={userName}
+                bookPhone={bookPhone}
+                returnPhone={returnPhone}
+              />
+            </td>
           </tr>
         ))}
       </tbody>

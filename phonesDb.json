@@ -1,0 +1,84 @@
+{
+  "Samsung Galaxy S9": {
+    "phoneInfo": {
+      "technology": "GSM / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 - SIM 1 & SIM 2 (dual-SIM model only)",
+      "3gBands": "HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 ",
+      "4gBands": " LTE"
+    },
+    "bookingInfo": {
+      "at": "Sat Dec 15 2018 15:35:09 GMT+0400 (Gulf Standard Time)",
+      "by": "asdfasdfa",
+      "key": "ABC"
+    }
+  },
+  "Samsung Galaxy S8": {
+    "phoneInfo": {
+      "technology": "GSM / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 - SIM 1 & SIM 2 (dual-SIM model only)",
+      "3gBands": "HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 ",
+      "4gBands": "LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 17(700), 20(800), 28(700)"
+    }
+  },
+  "Samsung Galaxy S7": {
+    "phoneInfo": {
+      "technology": "GSM / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 ",
+      "3gBands": "HSDPA 850 / 900 / 1900 / 2100 ",
+      "4gBands": " LTE"
+    }
+  },
+  "Motorola Nexus 6": {
+    "phoneInfo": {
+      "technology": "GSM / CDMA / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 - all models",
+      "3gBands": "HSDPA 800 / 850 / 900 / 1700 / 1800 / 1900 / 2100 - XT1100",
+      "4gBands": "LTE band 1(2100), 3(1800), 5(850), 7(2600), 8(900), 9(1800), 19(800), 20(800), 28(700), 41(2500) - XT1100"
+    }
+  },
+  "LG Nexus 5X": {
+    "phoneInfo": {
+      "technology": "GSM / CDMA / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 - all models",
+      "3gBands": "HSDPA 850 / 900 / 1700 / 1900 / 2100 - American model",
+      "4gBands": "LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 12(700), 13(700), 17(700), 20(800), 25(1900), 26(850), 29(700) - American model"
+    }
+  },
+  "Huawei Honor 7X": {
+    "phoneInfo": {
+      "technology": "GSM / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 - SIM 1 & SIM 2",
+      "3gBands": "HSDPA 850 / 900 / 1900 / 2100 ",
+      "4gBands": "LTE band 1(2100), 3(1800), 5(850), 7(2600), 8(900), 20(800), 40(2300)"
+    }
+  },
+  "Apple iPhone X": {
+    "phoneInfo": {
+      "technology": "GSM / HSPA / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 ",
+      "3gBands": "HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 ",
+      "4gBands": "LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 28(700), 29(700), 30(2300), 34(2000), 38(2600), 39(1900), 40(2300), 41(2500), 66(1700/2100)"
+    }
+  },
+  "Apple iPhone 8": {
+    "phoneInfo": {
+      "technology": "GSM / CDMA / HSPA / EVDO / LTE",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 ",
+      "3gBands": "HSDPA 850 / 900 / 1700 / 1900 / 2100 ",
+      "4gBands": "LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 7(2600), 8(900), 12(700), 13(700), 17(700), 18(800), 19(800), 20(800), 25(1900), 26(850), 28(700), 29(700), 30(2300)"
+    }
+  },
+  "Apple iPhone 4s": {
+    "phoneInfo": {
+      "technology": "GSM / CDMA / HSPA / EVDO",
+      "2gBands": "GSM 850 / 900 / 1800 / 1900 ",
+      "3gBands": "HSDPA 850 / 900 / 1900 / 2100 "
+    }
+  },
+  "Nokia 3310": {
+    "phoneInfo": {
+      "technology": "GSM",
+      "2gBands": "GSM 900 / 1800 "
+    }
+  }
+}
