@@ -16,6 +16,10 @@ export default class IndexPage extends React.Component {
     this.setState({
       name: localStorage.getItem('userName') || '',
     });
+    this.fetchPhonesInfo();
+  }
+
+  fetchPhonesInfo = () =>
     fetch('/api/phones')
       .then(r => r.json())
       .then(phones =>
@@ -23,7 +27,6 @@ export default class IndexPage extends React.Component {
           phones,
         }),
       );
-  }
 
   setName = name => {
     localStorage.setItem('userName', name);
@@ -41,11 +44,53 @@ export default class IndexPage extends React.Component {
         phone: phone.name,
         name: this.state.name,
       }),
-    });
+    })
+      .then(r =>
+        r.status === 200
+          ? r.json()
+          : r.json().then(data => Promise.reject(data)),
+      )
+      .then(bookingInfo => {
+        this.fetchPhonesInfo();
+        alert(
+          `Your booking key is: "${bookingInfo.key}"\nKeep it to return phone`,
+        );
+      })
+      .catch(err => {
+        if (err.message) {
+          alert(`Error:\n${err.message}`);
+        } else {
+          console.error(err);
+        }
+      });
   };
 
   returnPhone = phone => {
-    alert('Return phone');
+    const key = prompt("Please enter key, you've got on booking:", '');
+    fetch('/api/phone/return', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phone: phone.name,
+        key,
+      }),
+    })
+      .then(r =>
+        r.status === 200
+          ? r.json()
+          : r.json().then(data => Promise.reject(data)),
+      )
+      .then(bookingInfo => this.fetchPhonesInfo())
+      .catch(err => {
+        if (err.message) {
+          alert(`Error:\n${err.message}`);
+        } else {
+          console.error(err);
+        }
+      });
   };
 
   render() {

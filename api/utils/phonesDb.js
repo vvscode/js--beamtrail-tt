@@ -2,12 +2,12 @@ const phones = require('./phonesDb.json');
 
 const writeFile = require('util').promisify(require('fs').writeFile);
 
-const getKey = () =>
-  'ABCDEFGH'
+getKey = () =>
+  'ABCDEFGHIJKLMHNOPRST'
     .split('')
-    .sort(() => Math.random() > 0.5)
+    .sort(() => (Math.random() > 0.3 ? 1 : Math.random() < 0.6 ? 0 : -1))
     .join('')
-    .substr(0, 3);
+    .substr(0, 4);
 
 class PhonesDb {
   getListOfPhones() {
@@ -23,8 +23,9 @@ class PhonesDb {
   }
 
   dumpDb() {
-    return writeFile('./phonesDb.json', JSON.stringify(phones, null, 2)).then(
-      () => console.log('DB dumped', JSON.stringify(phones, null, 2)),
+    return writeFile(
+      __dirname + '/phonesDb.json',
+      JSON.stringify(phones, null, 2),
     );
   }
 

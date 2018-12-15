@@ -19,7 +19,11 @@ router.post('/return', (req, res) => {
   const { phone, key } = req.body;
   phonesDb
     .returnPhone(phone, key)
-    .then(bookingInfo => res.json(bookingInfo))
+    .then(() =>
+      res.json({
+        returned: true,
+      }),
+    )
     .catch(err => {
       res.status(400);
       res.send({
